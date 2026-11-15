@@ -1,0 +1,9 @@
+pais,kappa_twin,umbral_twin,cociente,coc_lo,coc_hi,n_bloques,n_bloque_meses,P2_pasa,comparacion,kappa,ic_lo,ic_hi
+Mexico,0.7506,0.563,0.6835,0.6103,0.7531,37,1167,False,twin_swap,0.7506,0.7063,0.7948
+Mexico,0.7506,0.563,0.6835,0.6103,0.7531,37,1167,False,harmonized,0.5131,0.4615,0.5669
+Mexico,0.7506,0.563,0.6835,0.6103,0.7531,37,1167,False,M1,0.4815,,
+Mexico,0.7506,0.563,0.6835,0.6103,0.7531,37,1167,False,M0,0.025,,
+Argentina,0.8046,0.6035,0.7388,0.6647,0.8018,40,1233,False,twin_swap,0.8046,0.7582,0.8435
+Argentina,0.8046,0.6035,0.7388,0.6647,0.8018,40,1233,False,harmonized,0.5944,0.5257,0.6547
+Argentina,0.8046,0.6035,0.7388,0.6647,0.8018,40,1233,False,M1,0.5375,,
+Argentina,0.8046,0.6035,0.7388,0.6647,0.8018,40,1233,False,M0,0.1371,,

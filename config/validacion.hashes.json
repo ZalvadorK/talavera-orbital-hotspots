@@ -1,0 +1,52 @@
+{
+  "arbol_src_nucleo": "94c113dca871185e08c579d6a003f99c26d5233bb22b40a40a5803e6c91ab0b1",
+  "archivos_src_nucleo": {
+    "src/nucleo/__init__.py": "e37292e9203b57295d56cc5508fe8d3d1bae7bba2c50b79ebc5a2c4943d857f3",
+    "src/nucleo/agregados.py": "6ae20b4453db0419d8b054af308cc79d9ce8b3c918e3df24bf5900f7a0393d7d",
+    "src/nucleo/baseline.py": "cc5e7eae0954926f2b28f29f7b20cd65cddaaf7d19e777b96ac2d6ad75ac7bc3",
+    "src/nucleo/diag_beta.py": "2a0dcba10c05ed546e0bab20e17a54d9dc0902a3dffda8d08399db2971e34052",
+    "src/nucleo/experimentos.py": "700c45cd0ff1831c02937f9f864920db4a22a0ab70abc47f2e2e6f51847f95ef",
+    "src/nucleo/factores.py": "e14c1720c0ff64130e65d5a44d55e4002694bc30288d4806936e687bc56197e9",
+    "src/nucleo/leak_audit.py": "531d6435c1a9090f65ad147f5698ddab44449d87cfcb37336de32e5a43e8f657",
+    "src/nucleo/m1_clases.py": "f7fc57ae04cfcc5656c58f7370ee494ce6715a3022759ababd56c8047b8b7bdf",
+    "src/nucleo/modelo.py": "7f50ec96d7ee6e439363a9def03a6d80e3d799362ba19625f2079740f2bf370c",
+    "src/nucleo/provenance.py": "ea2a32c065226d67624b50bcd6929072c1a9441fdf914941ffd84c3e21c638fa",
+    "src/nucleo/runguard.py": "cf20fb8fa39fd8a679e9be1a4cac955e60d54b5cadf1a2233f2fa2835b887d9c",
+    "src/nucleo/test_etiquetas_m1.py": "a8965b749b882d4b7f80508e04f10c7efe7698a1f330e0815cf961e202a8849b",
+    "src/nucleo/test_factores.py": "c89965f0e786e4f821c239c40a22c7ce1c049915831fcbb130d0609ff372c7c6",
+    "src/nucleo/test_guarda_prueba.py": "131cc5f138c1d6fcf18aaa3ffc658da82799055ecf43f4e0b665d77c2a3c23b2",
+    "src/nucleo/test_k1en_y_marca.py": "e69fb9a9a9970c0a294e4556badef8226c85c15b2f271af9ecf087cfdf572111",
+    "src/nucleo/test_paridad_marca.py": "530c40f632c8f6f2a4fe7ad76acf2512719b145e9d778d94bf212ef9a4280e39",
+    "src/nucleo/test_pendientes.py": "7f73451f44cade624fdc20e453f97ba9941e79bfc5e686aa7d516eb9323741df",
+    "src/nucleo/test_runguard.py": "ef7ae088250de5978ee3c2b4f25461008ec578ab0b5e10534a3dc680328f66ca",
+    "src/nucleo/trend.py": "218f4cf8e0100198a80d8939c70c8121623210b407653e4f9daf166597098d51",
+    "src/nucleo/validacion_marca.py": "cc9455fde86aeeec78d605994475ca6c18a256e0bcc4b7509a633c0370094c26",
+    "src/nucleo/validacion_rt05.py": "ba3ee1de1e63983f231eacfb4d0ba795a7192c0b4e3e93490b35c3827d69b567"
+  },
+  "config_yaml": "886fa29bc5ec9aa24a4b7fc194660ce22669124869956b244b17a6c703c68f21",
+  "tablas": {
+    "data/processed/factores_agregados_argentina_2012-02-01_2018-12-31.parquet": "964e28dd80f36ca39001d7feaf477f8f05c49946b45ea5af0bc77c56c3fe6dca",
+    "data/processed/factores_agregados_mexico_2012-02-01_2018-12-31.parquet": "d2fb00d8c4a6649fe755f7815b2120df6f9ad18d8fac314fbafcae77b5b691a4",
+    "data/processed/factores_argentina_2012-02-01_2018-12-31.parquet": "a5eafe415de27f52d3669d7de573820a342e1fcace004040f3651e7b9f85d443",
+    "data/processed/factores_mexico_2012-02-01_2018-12-31.parquet": "db6ee4505790710a77a0890a49030dae552f4fdd5de62a288d0b15a64d08e34f",
+    "data/processed/factores_argentina_2012-02-01_2018-12-31.json": "cac13cc9b6e337f68006b4870975be6dfb0fedcfb05d59245023c17fefdf314b",
+    "data/processed/factores_mexico_2012-02-01_2018-12-31.json": "b6566b88ec0cc33f401dccede6373b412be268bd0de4c137c14a645a4d26d2a8",
+    "data/processed/factores_mexico.parquet": "db6ee4505790710a77a0890a49030dae552f4fdd5de62a288d0b15a64d08e34f",
+    "data/processed/factores_argentina.parquet": "a5eafe415de27f52d3669d7de573820a342e1fcace004040f3651e7b9f85d443",
+    "data/processed/intervalos_argentina.json": "cacdcba7a23691fd40f88018edb172484b716c2f346ee96e0edcb86368d457e6",
+    "data/processed/intervalos_argentina_2012-02-01_2015-12-31.json": "caed309371373e544ef5f139317ed1e91a24082db4857f7a0439483b2c284832",
+    "data/processed/intervalos_mexico.json": "dc533a937dd309f8e7519c8f73643f3a827809dbebbf11027a45ec695c3bd9a2",
+    "data/processed/intervalos_mexico_2012-02-01_2015-12-31.json": "854681d0dadae0431b9e1de261b4933378e8754e56ca47df861302cedce19d32"
+  },
+  "entradas_prueba": {
+    "data/processed/deteccion_argentina.parquet": "951459684ad413a727014706c6f0c3054298ea313e76f093d3ea387054a6df16",
+    "data/processed/deteccion_mexico.parquet": "935d2236b2be2e6e3e644f503f8f0c6ac32747267506b38c8c48c4fe16960426",
+    "data/processed/disponibilidad_plataforma_dia.csv": "ac2e075de4819b792f86c314f4b541ad49c2e85437f83f0e76abbfe156467135",
+    "data/processed/mascara_estatica_argentina.parquet": "d58e1a8b74ea854565fe506ff86227af17b4b1bfdfa09dc5c0c63b8b20c74c5d",
+    "data/processed/mascara_estatica_mexico.parquet": "fa3539e88159ff50cbb6a25a9f2c7d4320c35a900119f6a23ef9dc8ed85ecdea"
+  },
+  "paridad_marca_json": "3eba29d30d629c2b71df8d944ec59260623c1b0cbef3256b6f36e58d0c7b7ce6",
+  "fecha_utc": "2026-11-15T20:22:43+00:00",
+  "commit_previo": "23e7f52",
+  "marca_si": "SI-generated (AI): Claude Code wrote the script that produced this file during the event; reviewed by the team."
+}

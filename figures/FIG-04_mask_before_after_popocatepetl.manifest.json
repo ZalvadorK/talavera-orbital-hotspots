@@ -1,0 +1,83 @@
+{
+  "figura": "FIG-04",
+  "titulo": "A volcano is not a wildfire: a mask fit on S-NPP also removes the crater in NOAA-20",
+  "marca_si": "SI-generated (AI): Claude Code wrote the script that produced this file during the event; reviewed by the team.",
+  "creado_utc": "2026-11-15T20:33:16+00:00",
+  "estado": "exploratory (mask fit 2012-2018; not a single-test result); the figures shown are CLM-109 (verificado)",
+  "clm": "CLM-109 (hallazgo medido: efecto de la mascara en el crater del Popocatepetl; verificado; las cifras de este manifiesto estan registradas como EVD-105 y coinciden con runs/EXP-010 seccion E: NOAA-20 type 1 2161/2161, type 0 84/8510) + CLM-103 (metodo de la mascara, verificado). Sigue EXPLORATORY (mascara ajustada en 2012-2018; no es resultado de la prueba unica).",
+  "origen": {
+    "experimento": "none (direct query of the series; mask from src/datos/tabla_analitica.py, ADR-0007 differentiator)",
+    "script_figura": "src/figuras/fig04_mascara.py",
+    "datos": "data/processed/deteccion_mexico.parquet (S-NPP 2012-01-20..2018-12-31; NOAA-20 en_serie, sin NRT, >= 2019-01-01); data/processed/mascara_estatica_mexico.parquet",
+    "figdata": [
+      "figures/figdata/FIG-04_mask_before_after_popocatepetl.csv",
+      "figures/figdata/FIG-04_mask_before_after_popocatepetl_footprint.csv"
+    ],
+    "chequeo_coherencia_titulo": "(umbral no pre-registrado) NOAA-20: crater (type 1) removido >= 95.0% y vegetacion (type 0) <= 5.0%"
+  },
+  "comando": "flock data/.pesado.lock .venv/bin/python src/figuras/fig04_mascara.py --real",
+  "semilla": null,
+  "entradas": [
+    {
+      "ruta": "data/processed/deteccion_mexico.parquet",
+      "sha256": "935d2236b2be2e6e3e644f503f8f0c6ac32747267506b38c8c48c4fe16960426",
+      "bytes": 164558185
+    },
+    {
+      "ruta": "data/processed/mascara_estatica_mexico.parquet",
+      "sha256": "fa3539e88159ff50cbb6a25a9f2c7d4320c35a900119f6a23ef9dc8ed85ecdea",
+      "bytes": 50246
+    },
+    {
+      "ruta": "src/figuras/fig04_mascara.py",
+      "sha256": "5849c9744d82d6e371fbafe31afb869e07186f0aa63477e2f9ab85b08786ba38",
+      "bytes": 14120
+    }
+  ],
+  "salidas": [
+    "figures/FIG-04_mask_before_after_popocatepetl.png",
+    "figures/FIG-04_mask_before_after_popocatepetl.svg"
+  ],
+  "python": "3.14.9",
+  "matplotlib": "3.11.2",
+  "anti_fuga": "Terra/Aqua/S-NPP >= 2019-01-01 not read (ADR-0005)",
+  "cifras": {
+    "snpp": {
+      "t1": 3661,
+      "t1_quitado": 3661,
+      "t0": 6243,
+      "t0_quitado": 96,
+      "otro": 1505,
+      "todo": 11409,
+      "pct_t1": 100.0,
+      "pct_t0": 1.537722248918789,
+      "f_min": "2012-01-20",
+      "f_max": "2018-12-30"
+    },
+    "noaa20": {
+      "t1": 2161,
+      "t1_quitado": 2161,
+      "t0": 8510,
+      "t0_quitado": 84,
+      "otro": 1742,
+      "todo": 12413,
+      "pct_t1": 100.0,
+      "pct_t0": 0.9870740305522914,
+      "f_min": "2019-01-01",
+      "f_max": "2026-07-31"
+    }
+  },
+  "ventana": "61x61 celdas de 0.01 grados centradas en la celda del crater",
+  "nota_dentro_de_muestra": "S-NPP 2012-2018 es la ventana de construccion de la mascara: 100 % de type=1 es por construccion; la evidencia independiente es NOAA-20",
+  "nota_type_otro": "type 2/3/ausente se cuentan aparte (n_otro) y no entran en las dos cifras del pie",
+  "salidas_sha256": {
+    "figures/FIG-04_mask_before_after_popocatepetl.png": "33862c6ac8ed51702ddb9a4657abec781e18452f8345c6a2c591459ea71bdbf9",
+    "figures/FIG-04_mask_before_after_popocatepetl.svg": "26060843b94cd13c536b5fe9e8ff8dbcccd310d1e501d495a77f8798fb1de8c2"
+  },
+  "ledger_estado": {
+    "CLM-109": "verificado",
+    "CLM-103": "verificado",
+    "EVD-105": "este manifiesto",
+    "nota": "ledger revisado 2026-11-15 ~16:10 Puebla (carril ledger, ronda 2 del gate H4); solo campos de texto, las salidas y sus sha256 no cambian"
+  }
+}

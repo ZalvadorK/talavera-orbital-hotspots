@@ -1,0 +1,13 @@
+{
+  "exp": "runs/EXP-009",
+  "exp_arg": "EXP-009",
+  "commit": "90e10ce0df38e950487a5536375943088e3b4d9d",
+  "tag": "prereg-v1",
+  "commit_tag": "90e10ce0df38e950487a5536375943088e3b4d9d",
+  "re_corrida": null,
+  "hora_utc": "2026-11-15T20:23:38+00:00",
+  "hora_puebla": "2026-11-15 14:23:38 (UTC-6)",
+  "pid": 246373,
+  "comando": ".venv/bin/python src/nucleo/validacion_rt05.py --modo prueba --prueba-unica --exp EXP-009",
+  "marca_si": "SI-generated (AI): Claude Code wrote the script that produced this file during the event; reviewed by the team."
+}

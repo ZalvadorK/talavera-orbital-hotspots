@@ -1,0 +1,78 @@
+{
+  "figura": "FIG-02",
+  "titulo": "One MODIS detection is worth about 3 to 18 VIIRS detections (Terra and Terra+Aqua clocks)",
+  "marca_si": "SI-generated (AI): Claude Code wrote the script that produced this file during the event; reviewed by the team.",
+  "creado_utc": "2026-11-15T21:31:07+00:00",
+  "estado": "exploratory (calibration period 2012-02 -> 2018-12 / development; not a single-test result); the title is CLM-137 (verificado, exploratorio)",
+  "clm": "CLM-137 (titulo 'about 3 to 18': verificado; k 2.63-18.05 en relojes T y TA, ruta runs/EXP-002/k_reloj_mes_turno_{mexico,argentina}.csv; IC95 de los extremos [2.57, 2.69] y [15.37, 22.03]; EVD-107 = este manifiesto) + CLM-102 (metodo de factores, verificado). Sigue EXPLORATORY: descripcion de la calibracion, no resultado de la prueba unica; 'worth' = cociente medio de pais antes del multiplicador local s.",
+  "origen": {
+    "experimento": "EXP-002",
+    "script_experimento": "src/nucleo/experimentos.py",
+    "script_figura": "src/figuras/fig02_relojes.py",
+    "datos": "data/processed/factores_{mexico,argentina}.parquet (k); factores_agregados_*_2012-02-01_2018-12-31.parquet (IC); runs/EXP-002/k_reloj_mes_turno_*.csv (verificacion)",
+    "figdata": "figures/figdata/FIG-02_clock_factors.csv",
+    "ic": "bootstrap por bloque-ano, B=1000, percentiles 2.5-97.5, exploratorio"
+  },
+  "comando": "flock data/.pesado.lock .venv/bin/python src/figuras/fig02_relojes.py --real",
+  "semilla": 42,
+  "entradas": [
+    {
+      "ruta": "data/processed/factores_mexico.parquet",
+      "sha256": "db6ee4505790710a77a0890a49030dae552f4fdd5de62a288d0b15a64d08e34f",
+      "bytes": 207254
+    },
+    {
+      "ruta": "data/processed/factores_agregados_mexico_2012-02-01_2018-12-31.parquet",
+      "sha256": "d2fb00d8c4a6649fe755f7815b2120df6f9ad18d8fac314fbafcae77b5b691a4",
+      "bytes": 331612
+    },
+    {
+      "ruta": "runs/EXP-002/k_reloj_mes_turno_mexico.csv",
+      "sha256": "87d5f2e084444a7f09e41613ade1771352bd11c37a2c31f0813c94492f9687d9",
+      "bytes": 1392
+    },
+    {
+      "ruta": "data/processed/factores_argentina.parquet",
+      "sha256": "a5eafe415de27f52d3669d7de573820a342e1fcace004040f3651e7b9f85d443",
+      "bytes": 292465
+    },
+    {
+      "ruta": "data/processed/factores_agregados_argentina_2012-02-01_2018-12-31.parquet",
+      "sha256": "964e28dd80f36ca39001d7feaf477f8f05c49946b45ea5af0bc77c56c3fe6dca",
+      "bytes": 378601
+    },
+    {
+      "ruta": "runs/EXP-002/k_reloj_mes_turno_argentina.csv",
+      "sha256": "ced2f9a3d56f6a294a6afd9e57300ba315f325b7f68c885c2a84adabceee0fb8",
+      "bytes": 1385
+    },
+    {
+      "ruta": "src/figuras/fig02_relojes.py",
+      "sha256": "4d95c2833d7c69dc48b1884af60804a37501ecb5c473d5ed45977305f2f88096",
+      "bytes": 12689
+    }
+  ],
+  "salidas": [
+    "figures/FIG-02_clock_factors.png",
+    "figures/FIG-02_clock_factors.svg"
+  ],
+  "python": "3.14.9",
+  "matplotlib": "3.11.2",
+  "anti_fuga": "Terra/Aqua/S-NPP >= 2019-01-01 not read (ADR-0005)",
+  "k_min_T_TA": 2.6296656365462114,
+  "k_max_T_TA": 18.04861925798219,
+  "k_max_A_respaldo": 34.72979762609908,
+  "ic_hi_max_A_respaldo": 73.99477842983227,
+  "nota": "titulo usa solo relojes T y TA; A (Aqua sola) es respaldo con pocas detecciones nocturnas; eje hasta 80, sin recorte",
+  "filas": 144,
+  "salidas_sha256": {
+    "figures/FIG-02_clock_factors.png": "3a3e003f09526a23987844443fd1d0a3a8ca4306d8285288697d742d398ef0c5",
+    "figures/FIG-02_clock_factors.svg": "7fc6f40a3571fd45f14f3b5f61166bfb765e91c7d7c7df72a95f6777cfe75cf4"
+  },
+  "ledger_estado": {
+    "CLM-137": "verificado",
+    "CLM-102": "verificado",
+    "EVD-107": "este manifiesto",
+    "nota": "ledger revisado 2026-11-15 ~16:10 Puebla (carril ledger, ronda 2 del gate H4); solo campos de texto, las salidas y sus sha256 no cambian"
+  }
+}

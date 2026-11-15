@@ -1,0 +1,236 @@
+{
+  "version": 1,
+  "generado_por": "src/figuras/paleta.py",
+  "marca_si": "SI-generated (AI): Claude Code wrote this during the event; reviewed by the team.",
+  "principios": [
+    "Nada se comunica solo por color: cada estado lleva trama y etiqueta.",
+    "Secuencial = conteos (cividis, 0 = claro). Divergente = anomalias, centrado en 0 (RdBu_r).",
+    "Misma entidad, mismo color en figuras y app.",
+    "No data se dibuja con trama 'xx' sobre blanco: nunca como un cero."
+  ],
+  "fondo": "#FFFFFF",
+  "texto": "#1A1A1A",
+  "texto_secundario": "#4D4D4D",
+  "rejilla": "#D9D9D9",
+  "categorica_okabe_ito": [
+    "#000000",
+    "#E69F00",
+    "#56B4E9",
+    "#009E73",
+    "#F0E442",
+    "#0072B2",
+    "#D55E00",
+    "#CC79A7"
+  ],
+  "entidades": {
+    "Terra": "#D55E00",
+    "Aqua": "#56B4E9",
+    "S-NPP": "#009E73",
+    "NOAA-20": "#0072B2",
+    "VIIRS-equivalent": "#000000",
+    "unharmonized_M0": "#8C8C8C",
+    "baseline_M1": "#E69F00"
+  },
+  "paises": {
+    "Mexico": "#CC79A7",
+    "Argentina": "#332288"
+  },
+  "turnos": {
+    "colores": {
+      "day": "#E69F00",
+      "night": "#4D4D4D"
+    },
+    "linea": {
+      "day": "solid",
+      "night": "dashed"
+    }
+  },
+  "pruebas": {
+    "native": "#000000",
+    "T1_all_parameters": "#AA4499",
+    "T2_shape_only": "#999933"
+  },
+  "secuencial": {
+    "uso": "conteos de hotspot detections (mapas de calor, calendario); usar escala log si hay ordenes de magnitud",
+    "base": "matplotlib cividis",
+    "stops": [
+      "#00224e",
+      "#1a386f",
+      "#434e6c",
+      "#61656f",
+      "#7d7c78",
+      "#9b9476",
+      "#bcae6c",
+      "#dec958",
+      "#fee838"
+    ],
+    "sin_datos": "#FFFFFF"
+  },
+  "divergente": {
+    "uso": "anomalias y razones a la mediana; centro = 0 (o 1 en razon, en log). Simetrico: vmin = -vmax",
+    "base": "matplotlib RdBu_r (ColorBrewer RdBu)",
+    "stops": [
+      "#053061",
+      "#2065ab",
+      "#4393c3",
+      "#90c4dd",
+      "#d1e5f0",
+      "#f7f6f6",
+      "#fddbc7",
+      "#f3a481",
+      "#d6604d",
+      "#b1182b",
+      "#67001f"
+    ],
+    "centro": "#f7f6f6"
+  },
+  "estados": {
+    "unusual_high": {
+      "relleno": "#D55E00",
+      "borde": "#7A3600",
+      "trama": "",
+      "texto": "#FFFFFF",
+      "etiqueta": "Unusually high",
+      "nota": "Ambos extremos del IC80 > p90 (ADR-0006)",
+      "contraste_texto": 3.87
+    },
+    "unusual_low": {
+      "relleno": "#0072B2",
+      "borde": "#00334F",
+      "trama": "",
+      "texto": "#FFFFFF",
+      "etiqueta": "Unusually low",
+      "nota": "Ambos extremos < p10 y p10 > 0",
+      "contraste_texto": 5.19
+    },
+    "possibly_unusual": {
+      "relleno": "#F6D2B0",
+      "borde": "#D55E00",
+      "trama": "///",
+      "texto": "#1A1A1A",
+      "etiqueta": "Possibly unusual",
+      "nota": "Solo un extremo del IC80 cumple la regla",
+      "contraste_texto": 12.24
+    },
+    "typical": {
+      "relleno": "#CFCFCF",
+      "borde": "#8C8C8C",
+      "trama": "",
+      "texto": "#1A1A1A",
+      "etiqueta": "Typical",
+      "nota": "Ningun extremo cumple la regla",
+      "contraste_texto": 11.17
+    },
+    "no_data": {
+      "relleno": "#FFFFFF",
+      "borde": "#6B6B6B",
+      "trama": "xx",
+      "texto": "#1A1A1A",
+      "etiqueta": "No data",
+      "nota": "Plataforma sin datos: NO es cero",
+      "contraste_texto": 17.4
+    },
+    "insufficient": {
+      "relleno": "#F5F5F5",
+      "borde": "#B0B0B0",
+      "trama": "..",
+      "texto": "#1A1A1A",
+      "etiqueta": "Insufficient data",
+      "nota": "Mediana base < 5 (6a)",
+      "contraste_texto": 15.96
+    }
+  },
+  "superpuestos": {
+    "provisional": {
+      "borde": "#CC79A7",
+      "estilo_borde": "dashed",
+      "grosor_px": 3,
+      "trama": "",
+      "etiqueta": "Provisional (NRT)",
+      "nota": "Cola NRT desde ago-2026; FIRMS la reemplaza"
+    },
+    "estimated": {
+      "borde": "#000000",
+      "estilo_borde": "solid",
+      "grosor_px": 1,
+      "trama": "\\\\\\",
+      "etiqueta": "Estimated (from MODIS)",
+      "nota": "Era Terra / Terra+Aqua; lleva intervalo"
+    },
+    "incomplete": {
+      "borde": "#000000",
+      "estilo_borde": "dotted",
+      "grosor_px": 2,
+      "trama": "++",
+      "etiqueta": "Incomplete month",
+      "nota": "T-16: hueco de plataforma"
+    },
+    "lower_confidence": {
+      "borde": "#000000",
+      "estilo_borde": "dashdot",
+      "grosor_px": 2,
+      "trama": "",
+      "etiqueta": "Lower confidence (indicative)",
+      "nota": "Era Terra sola dic-2000 a jun-2002"
+    }
+  },
+  "auditoria_daltonismo": {
+    "metodo": "Machado et al. 2009, severidad 1.0, dE76 en CIELAB; menor distancia entre pares de la familia",
+    "umbral_recomendado_dE76": 10,
+    "entidades": {
+      "protanopia": {
+        "min_dE76": 19.0,
+        "par": "S-NPP~unharmonized_M0"
+      },
+      "deuteranopia": {
+        "min_dE76": 9.6,
+        "par": "S-NPP~unharmonized_M0"
+      },
+      "tritanopia": {
+        "min_dE76": 16.1,
+        "par": "Aqua~S-NPP"
+      },
+      "normal": {
+        "min_dE76": 26.4,
+        "par": "Aqua~NOAA-20"
+      }
+    },
+    "paises_y_turnos": {
+      "protanopia": {
+        "min_dE76": 30.5,
+        "par": "pais_Mexico~turno_night"
+      },
+      "deuteranopia": {
+        "min_dE76": 31.1,
+        "par": "pais_Mexico~turno_night"
+      },
+      "tritanopia": {
+        "min_dE76": 17.2,
+        "par": "pais_Mexico~turno_day"
+      },
+      "normal": {
+        "min_dE76": 49.0,
+        "par": "pais_Mexico~turno_night"
+      }
+    },
+    "estados_rellenos": {
+      "protanopia": {
+        "min_dE76": 13.4,
+        "par": "typical~insufficient"
+      },
+      "deuteranopia": {
+        "min_dE76": 13.4,
+        "par": "typical~insufficient"
+      },
+      "tritanopia": {
+        "min_dE76": 13.4,
+        "par": "typical~insufficient"
+      },
+      "normal": {
+        "min_dE76": 13.4,
+        "par": "typical~insufficient"
+      }
+    },
+    "nota": "Los pares con dE bajo se distinguen ademas por trama, estilo de linea o marcador (regla 'no solo color')."
+  }
+}

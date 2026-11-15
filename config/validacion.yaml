@@ -1,0 +1,170 @@
+# Configuración de la validación de RT-05 (ADR-0005, D2-S-07 §4.3 y §5; regla de marca ADR-0006).
+# SI-generated (AI): Claude Code wrote this during the event; reviewed by the team.
+# Modificado dom 15-nov-2026 ~14:00 Puebla (Claude Code, SI-generated): aplica la D2 del lote 3 que tomó Salvador
+# (13:45 Puebla; docs/decisiones/lote3-al-despertar.md, puntos 1–11 y 17). Antes del registro de hashes y del tag:
+# nada de esto es retroactivo (no existen prereg-v1, config/validacion.hashes.json ni verdict.json).
+#
+# La lee src/nucleo/validacion_rt05.py. Se congela con el tag git `prereg-v1` (hash en config/validacion.hashes.json).
+# Mientras quede algún `pendiente_lote3: true`, o alguna prueba en `run` sin su umbral (p. ej. P5 sin criterio,
+# clases_I05 sin umbral M1), el modo prueba y el registro de hashes se NIEGAN a correr (validacion_rt05.pendientes()).
+# Con este archivo pendientes() = [] (D2 lote 3, Salvador, 15-nov).
+# Lote 3 · puntos de método SIN cambio de configuración (D2 lote 3, Salvador, 15-nov):
+#   #1 sesgo por nivel de actividad (β < 1): limitación declarada, sin recalibrar (nota: docs/03-nucleo/nota-sesgo-actividad.md).
+#   #2 método ADR-0003 sin enmienda; encogimiento Gamma-Poisson y λ̂ (DIAG-001) solo como evidencia complementaria.
+#   #3 calibración desde 2012-02-01 (abajo); 2012-01-20 solo para construir la máscara.
+#   #8 se publica el modelo probado (7g); E1b solo si falla J2 de bloque (7g-bis, ya implementado).
+#   #10 I-03 ratificado (residuos LOYO por clase de Ŝ × tramo × país); ADR-0006 se mantiene; R solo descriptiva;
+#       sin factor de área de píxel.
+version: 1
+semilla: 42
+n_boot: 1000
+paises: [mexico, argentina]
+
+modos:
+  # Depuración: calibra 2012-02 → 2015-12, evalúa 2016–2018 (ya mirado en los pilotos; NO es test). Nunca toca 2019+.
+  # Inicio de la calibración 2012-02-01 en los dos modos (D2 lote 3 punto 3, Salvador, 15-nov; enero de 2012 es un mes
+  # parcial de S-NPP); 2012-01-20 solo se usa para construir la máscara.
+  desarrollo:
+    calibracion: ["2012-02-01", "2015-12-31"]
+    base: ["2012-02-01", "2015-12-31"]          # base VIIRS de la marca (mismo mes calendario, N = 4; ene N = 3)
+    evaluacion: ["2016-01-01", "2018-12-31"]
+    objetivo: S-NPP                              # en desarrollo el objetivo es S-NPP (NOAA-20 solo existe desde 2018-04)
+    testigo: NOAA-20                             # gemelos solo en abr–dic 2018
+    fecha_maxima: "2018-12-31"                   # assert duro anti-fuga
+  # Prueba única W2 (ADR-0005 7b). Exige --prueba-unica, tag prereg-v1 y hashes coincidentes.
+  prueba:
+    calibracion: ["2012-02-01", "2018-12-31"]
+    base: ["2012-02-01", "2018-12-31"]          # N = 7 (ene N = 6)
+    evaluacion: ["2019-01-01", "2021-12-31"]
+    sub_ventana_w1: ["2019-01-01", "2020-02-29"] # sub-análisis (se reporta, no decide)
+    objetivo: NOAA-20
+    testigo: S-NPP
+    fecha_maxima: "2021-12-31"
+
+base_serie: e1c                 # base de la marca = serie VIIRS mostrada: S-NPP < cambio_gemelo ≤ NOAA-20
+cambio_gemelo: "2018-04-01"
+puente_e1b: ["2018-04-01", "2018-12-31"]   # f = Σ NOAA-20 / Σ S-NPP del país (E1b: S-NPP × f, MODIS × k × f)
+excluir_enero_2012: true
+
+umbral_celda_evaluable: 200     # detecciones Terra+Aqua (estándar, fuera de máscara) en la calibración del modo
+pseudoconteo_log: 1             # ALE = |log((S+1)/(Ŝ+1))|; J2 = log((N20+1)/(S+1))
+bloque_grados: 3
+bloque_sensibilidad_grados: 6   # bootstrap con bloques 6° × año como sensibilidad
+bloques_con_todas_las_celdas: true   # el bloque suma todas sus celdas de 1° (como el piloto), no solo las evaluables
+
+intervalo:
+  forma: multiplicativo         # contrato: intervalo() devuelve (lo, hi) multiplicativos → [Ŝ·lo, Ŝ·hi]
+  nivel_celda: 1deg
+  nivel_bloque: aoi             # un bloque de 3° se trata como una AOI (modelo único I-03)
+  nivel_pais: pais
+
+marca:
+  kappa: u1_3clases             # κ de Cohen sobre la marca U1 completa (high / none / low); D2 lote 3 #7 (Salvador, 15-nov). También se reportan "solo high".
+  nombre_base: "2012–2018 VIIRS"
+
+# Avisos oficiales de huecos MODIS (ADR-0003); se aplican al extender la tabla R1 más allá de 2018 en la corrida única.
+avisos_oficiales_modis:
+  - [Terra, "2001-06-15", "2001-07-02"]
+  - [Terra, "2016-02-18", "2016-02-28"]
+# 7h · huecos de datos en W2 (D2 lote 3 punto 7, Salvador, 15-nov). REGLA OBJETIVA fijada antes de la prueba: se excluye
+# de TODAS las pruebas el mes de 2019–2021 en que Terra, Aqua, NOAA-20 o S-NPP tengan >= 3 días sin datos en la tabla
+# «Standard Data» de FIRMS /api/missing_data/ (fuentes *_SP; las *_NRT no aplican a 2019–2021 por construcción).
+# Procedencia de la lista: consulta 2026-11-15T19:51:09Z, HTTP 200, 24401 bytes,
+# sha256 60ab8a4d35394d116378ba11747f6a4286d7303c9a8a77b8ec7ac01757f1b3e1 (src/datos/huecos_firms.py;
+# docs/02-datos/huecos-firms-missing-data.md): 0 días con hueco en W2 para VIIRS_NOAA20_SP, VIIRS_SNPP_SP y MODIS_SP
+# (MODIS_SP agrupa Terra y Aqua). Lista VERIFICADA y CONGELADA = [] (vacía por resultado, no por omisión). Formato "AAAA-MM".
+meses_excluidos_huecos_viirs: []
+sensibilidad_excluir_anio:
+  argentina: 2020
+
+# J1 (D2 lote 3 punto 7, Salvador, 15-nov): 2003-01 → 2011-12 (jul–dic 2002 queda fuera: mes mezclado de la entrada de
+# Aqua) y sin los 4 meses con días sin Terra.
+j1:
+  ventana: ["2003-01-01", "2011-12-31"]   # BT vs B2s, país × mes (no reservado)
+  excluir_meses_con_hueco_terra: true
+
+c_v:
+  ventana: ["2016-01-01", "2018-12-31"]   # log(S-NPP/(T+A)) mensual del país; escalón buscado en 2018-01 (6.2 → 6.03)
+  mes_escalon: "2018-01"
+
+# S8 · tendencia (ADR-0012 opción 2, decidido por Salvador): pre-registrada, SE REPORTA y NO DECIDE.
+# Pendiente de Sen estacional (mediana de pendientes entre el mismo mes de años distintos, Hirsch et al. 1982) de
+# log(x + pseudoconteo) por año, por bloque 3°: serie VIIRS objetivo (prueba: NOAA-20) frente a H_TA (y M1, M0).
+# Diferencia por bloque (mediana, IC bootstrap por bloques) y del agregado del país. Nunca entra en el veredicto.
+s8:
+  decide: false
+  serie: objetivo              # prueba: NOAA-20 (la serie); desarrollo: S-NPP (NOAA-20 solo existe desde 2018-04)
+  metodo: sen_estacional
+  pseudoconteo: 1
+  poblacion: p2                # bloque-meses de la población de P2 (base suficiente, no excluidos); alternativa: todas
+  min_pares_por_bloque: 6      # pares mismo-mes válidos para reportar un bloque (valor de ingeniería, no decide)
+  nivel_ic: 0.95
+
+# 7h · población de P3 (B-R10; D2 lote 3 punto 7, Salvador, 15-nov): DECIDE excluye_s0 (solo Ŝ > 0), porque con Ŝ = 0
+# el intervalo es (0, ∞) y siempre cubre. incluye_s0 = todas las celda-meses evaluables, incluidas las de Ŝ = 0.
+# El informe y verdict*.json reportan SIEMPRE las dos coberturas (con IC95 y n) y el número de celda-meses excluidos
+# por Ŝ = 0 (`n_excluidos_Shat_cero`). La misma población rige P3 dentro de P5.
+p3:
+  poblacion: excluye_s0
+
+# I-05 · P2/P2b por clase de conteo MODIS esperado. ACTIVO (`pruebas.clases_I05: run`; D2 lote 3 punto 9, Salvador,
+# 15-nov). El veredicto añade P2/P2b/"reliable" por clase (grupo "juntas" = celdas 1° + bloques 3°, ruta I-05 §2-3).
+# Regla M1 (umbrales.M1): una clase cuyo conteo esperado queda entero bajo `min_modis_por_mes` se etiqueta
+# 'too_few_modis' y nunca 'reliable', pase o no P2/P2b (sus métricas se reportan igual).
+i05:
+  cortes_conteo_modis: [10, 30, 100]   # clases <10, 10–30, 30–100, ≥100 (propuesta de la ruta I-05; cada corte va a la clase de arriba)
+  conteo: TA                    # Terra+Aqua estándar fuera de máscara (T = Terra sola)
+  estadistico: mediana_mensual  # mediana de los conteos mensuales de la unidad en la calibración del modo (ceros incluidos)
+  unidades: [celda1, bloque3]
+  juntar_unidades: true         # "juntando celdas de 1° y bloques de 3° de cada clase" (ruta I-05 §2)
+  reportar_por_unidad: true
+  nivel_intervalo: {celda1: 1deg, bloque3: aoi}
+
+# Umbrales de D2-S-07 tabla 4.3, FIJADOS SIN CAMBIOS (D2 lote 3 puntos 5 y 6, Salvador, 15-nov: "mantener todos sin
+# cambios"; propuestos el 14-nov con el sondeo piloto S-06/S-07 y fijados el 15-nov 13:45; no se movieron tras EXP-003…005). 7c-bis: "reliable" exige además
+# cobertura del IC80 a bloque 3° en [0.75, 0.85] y como máximo 50 % de meses indeterminados (P2b.indeterminado_max).
+umbrales:
+  pendiente_lote3: false
+  P2:  {kappa_min: 0.60, cociente_gemelos_min: 0.75, escala: bloque3}
+  P2b: {precision_unusual_min: 0.80, precision_typical_min: 0.95, cobertura_ic80_bloque: [0.75, 0.85], indeterminado_max: 0.50}
+  P3:  {cobertura: [0.75, 0.85]}
+  P4:  {skill_ic95_inferior_mayor_que: 0.0}
+  J1:  {media_abs_max: 0.10, ic95_dentro_de: 0.15, anio_abs_max: 0.15}
+  J2_bloque: {media_abs_max: 0.05}
+  T:   {log_sesgo_abs_max: 0.10, G_max: 1.15, delta_kappa_min: -0.05}
+  # P5 (era Terra sola; ADR-0005 7a/7f; D2 lote 3 punto 17, Salvador, 15-nov): veredicto PROPIO con criterio predefinido
+  # mismos_que_P2_P2b_P3 (P5 pasa si P2, P2b y P3 con H_T pasan con los umbrales de arriba; P3 con p3.poblacion).
+  # La era Terra sola sigue 'indicative (Terra only)' aunque P5 pase.
+  P5:  {criterio: mismos_que_P2_P2b_P3}
+  # M1 · AOI mínima por conteo MODIS (ADR-0004; D2 lote 3 punto 9, Salvador, 15-nov): 'too few MODIS detections'
+  # (etiqueta 'too_few_modis', nunca 'reliable') cuando la MEDIANA de los conteos mensuales MODIS esperados de la unidad
+  # (calibración del modo, ceros incluidos, sin meses incompletos) es < 10. Era Terra+Aqua: conteo T+A; era Terra sola:
+  # conteo de Terra (el MODIS disponible en esa era). Lo aplica validacion_rt05.etiqueta_estimacion() y el veredicto I-05.
+  M1:  {min_modis_por_mes: 10}
+  # Chequeos de consistencia (no deciden): referencias, no veredicto
+  P1_chequeo: {ic90_dentro_de: [0.90, 1.11], anio_dentro_de: [0.80, 1.25]}
+  J2_pais_chequeo: {media_abs_max: 0.05}
+
+# Núcleo pre-registrado: "run". Lo demás "not_run" (configurable).
+pruebas:
+  P1: run
+  P2: run
+  P2b: run
+  P3: run
+  P4: run
+  J1: run
+  J2: run
+  T1: run
+  T2: run
+  E1b: run
+  C_V: run
+  P5: run          # D2 lote 3 punto 17 (Salvador, 15-nov): veredicto propio, criterio umbrales.P5
+  S1: not_run
+  S2: not_run
+  S3: not_run
+  S4: not_run
+  S5: not_run
+  S6: not_run
+  S7: not_run
+  S8: run          # ADR-0012 opción 2: se reporta, no decide (s8.decide: false); D2 lote 3 #17: solo reportado
+  clases_I05: run  # D2 lote 3 punto 9 (Salvador, 15-nov): activo, con la regla M1 (umbrales.M1)

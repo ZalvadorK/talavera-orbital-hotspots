@@ -1,0 +1,390 @@
+{
+  "modo": "prueba",
+  "etiqueta": "PRE-REGISTERED SINGLE TEST (W2 2019-01→2021-12)",
+  "veredicto": {
+    "umbrales_fijados": true,
+    "por_pais": {
+      "mexico": {
+        "E1c": {
+          "P2_bloque3": false,
+          "P2b_7cbis_reliable": false,
+          "P3": true,
+          "P4": true,
+          "RT05_bloque3": false,
+          "P3_coberturas": {
+            "incluye_s0": {
+              "cobertura": 0.8468,
+              "ic95": [
+                0.83,
+                0.8624
+              ],
+              "n": 5868
+            },
+            "excluye_s0": {
+              "cobertura": 0.8022,
+              "ic95": [
+                0.7842,
+                0.8178
+              ],
+              "n": 4545
+            },
+            "n_excluidos_Shat_cero": 1323,
+            "decide": "excluye_s0"
+          }
+        },
+        "E1b": {
+          "P2_bloque3": false,
+          "P2b_7cbis_reliable": false,
+          "P3": true,
+          "P4": true,
+          "RT05_bloque3": false,
+          "P3_coberturas": {
+            "incluye_s0": {
+              "cobertura": 0.8453,
+              "ic95": [
+                0.8288,
+                0.8612
+              ],
+              "n": 5868
+            },
+            "excluye_s0": {
+              "cobertura": 0.8002,
+              "ic95": [
+                0.784,
+                0.8167
+              ],
+              "n": 4545
+            },
+            "n_excluidos_Shat_cero": 1323,
+            "decide": "excluye_s0"
+          }
+        },
+        "J2_bloque": true,
+        "J1": true,
+        "clases_I05": {
+          "juntas": {
+            "<10": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "too_few",
+              "reliable": false,
+              "etiqueta": "too_few_modis"
+            },
+            "10-30": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            },
+            "30-100": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            },
+            ">=100": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            }
+          },
+          "celda1": {
+            "<10": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "too_few",
+              "reliable": false,
+              "etiqueta": "too_few_modis"
+            },
+            "10-30": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            },
+            "30-100": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            },
+            ">=100": {
+              "P2": null,
+              "P2b": null,
+              "posicion_M1": "ok",
+              "reliable": null,
+              "etiqueta": "indicative"
+            }
+          },
+          "bloque3": {
+            "<10": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "too_few",
+              "reliable": false,
+              "etiqueta": "too_few_modis"
+            },
+            "10-30": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            },
+            "30-100": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            },
+            ">=100": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            }
+          }
+        },
+        "P5_era_terra_sola": {
+          "etiqueta_era": "indicative (Terra only)",
+          "criterio": "mismos_que_P2_P2b_P3",
+          "estado": "computed",
+          "P2_bloque3": false,
+          "P2b": false,
+          "P3": true,
+          "P5": false,
+          "P3_coberturas": {
+            "incluye_s0": {
+              "cobertura": 0.8766,
+              "ic95": [
+                0.8611,
+                0.8911
+              ],
+              "n": 5868
+            },
+            "excluye_s0": {
+              "cobertura": 0.8138,
+              "ic95": [
+                0.7964,
+                0.8307
+              ],
+              "n": 3888
+            },
+            "n_excluidos_Shat_cero": 1980,
+            "decide": "excluye_s0"
+          }
+        },
+        "escala_publicada_7gbis": "E1c",
+        "etiqueta_terra_sola": "indicative (Terra only)"
+      },
+      "argentina": {
+        "E1c": {
+          "P2_bloque3": false,
+          "P2b_7cbis_reliable": false,
+          "P3": true,
+          "P4": false,
+          "RT05_bloque3": false,
+          "P3_coberturas": {
+            "incluye_s0": {
+              "cobertura": 0.8316,
+              "ic95": [
+                0.8147,
+                0.848
+              ],
+              "n": 6300
+            },
+            "excluye_s0": {
+              "cobertura": 0.7941,
+              "ic95": [
+                0.7755,
+                0.811
+              ],
+              "n": 5153
+            },
+            "n_excluidos_Shat_cero": 1147,
+            "decide": "excluye_s0"
+          }
+        },
+        "E1b": {
+          "P2_bloque3": true,
+          "P2b_7cbis_reliable": false,
+          "P3": true,
+          "P4": false,
+          "RT05_bloque3": false,
+          "P3_coberturas": {
+            "incluye_s0": {
+              "cobertura": 0.8289,
+              "ic95": [
+                0.8106,
+                0.8455
+              ],
+              "n": 6300
+            },
+            "excluye_s0": {
+              "cobertura": 0.7908,
+              "ic95": [
+                0.7706,
+                0.8075
+              ],
+              "n": 5153
+            },
+            "n_excluidos_Shat_cero": 1147,
+            "decide": "excluye_s0"
+          }
+        },
+        "J2_bloque": true,
+        "J1": true,
+        "clases_I05": {
+          "juntas": {
+            "<10": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "too_few",
+              "reliable": false,
+              "etiqueta": "too_few_modis"
+            },
+            "10-30": {
+              "P2": true,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            },
+            "30-100": {
+              "P2": true,
+              "P2b": true,
+              "posicion_M1": "ok",
+              "reliable": true,
+              "etiqueta": "reliable"
+            },
+            ">=100": {
+              "P2": true,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            }
+          },
+          "celda1": {
+            "<10": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "too_few",
+              "reliable": false,
+              "etiqueta": "too_few_modis"
+            },
+            "10-30": {
+              "P2": true,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            },
+            "30-100": {
+              "P2": true,
+              "P2b": true,
+              "posicion_M1": "ok",
+              "reliable": true,
+              "etiqueta": "reliable"
+            },
+            ">=100": {
+              "P2": null,
+              "P2b": null,
+              "posicion_M1": "ok",
+              "reliable": null,
+              "etiqueta": "indicative"
+            }
+          },
+          "bloque3": {
+            "<10": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "too_few",
+              "reliable": false,
+              "etiqueta": "too_few_modis"
+            },
+            "10-30": {
+              "P2": false,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            },
+            "30-100": {
+              "P2": true,
+              "P2b": true,
+              "posicion_M1": "ok",
+              "reliable": true,
+              "etiqueta": "reliable"
+            },
+            ">=100": {
+              "P2": true,
+              "P2b": false,
+              "posicion_M1": "ok",
+              "reliable": false,
+              "etiqueta": "indicative"
+            }
+          }
+        },
+        "P5_era_terra_sola": {
+          "etiqueta_era": "indicative (Terra only)",
+          "criterio": "mismos_que_P2_P2b_P3",
+          "estado": "computed",
+          "P2_bloque3": false,
+          "P2b": false,
+          "P3": true,
+          "P5": false,
+          "P3_coberturas": {
+            "incluye_s0": {
+              "cobertura": 0.873,
+              "ic95": [
+                0.8603,
+                0.8859
+              ],
+              "n": 6300
+            },
+            "excluye_s0": {
+              "cobertura": 0.8123,
+              "ic95": [
+                0.7978,
+                0.8267
+              ],
+              "n": 4261
+            },
+            "n_excluidos_Shat_cero": 2039,
+            "decide": "excluye_s0"
+          }
+        },
+        "escala_publicada_7gbis": "E1c",
+        "etiqueta_terra_sola": "indicative (Terra only)"
+      }
+    },
+    "P3_poblacion": "excluye_s0",
+    "M1": {
+      "min_modis_por_mes": 10,
+      "etiqueta": "too_few_modis",
+      "estadistico": "median of the monthly MODIS counts of the unit in the calibration window of the mode (T+A for the Terra+Aqua era, Terra for the Terra-only era); below the threshold -> never reliable"
+    },
+    "regla_etiqueta": "I-05 rule 3b + count classes (reliable only for AOIs >= one 3-degree block of a country that passed P2 and P2b on the published scale AND whose count class passed P2 and P2b and is not below M1)",
+    "era_terra_sola": "indicative (Terra only), even if P5 passes",
+    "transferencia": {
+      "mexico->argentina": {
+        "T1": false,
+        "T2": false
+      },
+      "argentina->mexico": {
+        "T1": false,
+        "T2": true
+      }
+    }
+  },
+  "marca_si": "SI-generated (AI): Claude Code wrote the script that produced this file during the event; reviewed by the team."
+}

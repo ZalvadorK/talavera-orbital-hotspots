@@ -1,0 +1,72 @@
+{
+ "figura": "FIG-03",
+ "titulo": "Conversion factors did not travel between countries, except Argentina's shape applied in Mexico",
+ "marca_si": "SI-generated (AI): Claude Code wrote the script that produced this file during the event; reviewed by the team.",
+ "creado_utc": "2026-11-15T21:31:06+00:00",
+ "estado": "single pre-registered test result (EXP-009); published only with the prior-exposure statement",
+ "clm": "CLM-108",
+ "origen": {
+  "experimento": "EXP-009",
+  "commit_experimento": "90e10ce",
+  "tag": "prereg-v1",
+  "script_figura": "src/figuras/fig03_transferencia.py",
+  "figdata": "figures/figdata/FIG-03_transfer_mx_ar.csv",
+  "campos": "metricas.transferencia.<dir>.<T1|T2>: B, log_B, G, kappa_transfer, kappa_local, delta_kappa; verdict.veredicto.transferencia (coherencia verificada contra los umbrales)",
+  "ic": "ninguno: EXP-009 reporta las metricas de transferencia como puntos"
+ },
+ "comando": "flock data/.pesado.lock .venv/bin/python src/figuras/fig03_transferencia.py --real",
+ "semilla": 42,
+ "entradas": [
+  {
+   "ruta": "runs/EXP-009/verdict.json",
+   "sha256": "ae3555c3e279944325d92a151d8b0a41e02bee1e146d67c2ee24c0b278255f99",
+   "bytes": 10766
+  },
+  {
+   "ruta": "runs/EXP-009/metricas.json",
+   "sha256": "b7c29cb32485d8f3fc5ce1a8dba2d5c84bb70008ed964ea4e92085c71d2393b3",
+   "bytes": 89493
+  },
+  {
+   "ruta": "runs/EXP-009/manifiesto.json",
+   "sha256": "43897000094b272bf999a239b788949ba49c8f048dbf8312292fb6babd74bd21",
+   "bytes": 5552
+  },
+  {
+   "ruta": "figures/figdata/FIG-03_transfer_mx_ar.csv",
+   "sha256": "7ed33da9e050cbbeed827aa2099f5fc72422979ec9f43477b5bf1e42b4ad4118",
+   "bytes": 451
+  },
+  {
+   "ruta": "src/figuras/fig03_transferencia.py",
+   "sha256": "3e73c72d5db08fd02413e7d4707cc2ea080e1fe6fc02d9424cc0e129677a6945",
+   "bytes": 8795
+  }
+ ],
+ "salidas": [
+  "figures/FIG-03_transfer_mx_ar.png",
+  "figures/FIG-03_transfer_mx_ar.svg"
+ ],
+ "python": "3.14.9",
+ "matplotlib": "3.11.2",
+ "anti_fuga": "n/a tras el veredicto; reserva abierta solo por runs/EXP-009/verdict.json (modo prueba, dirty=false)",
+ "clm_nota": "CLM-108 (transfer result, runs/EXP-009/metricas.json → transferencia) is verified in docs/evidencia/evidencia.yaml.",
+ "rotulo_figura": "PRE-REGISTERED SINGLE TEST 2019-2021 (EXP-009)",
+ "umbrales": {
+  "abs_log_B_max": 0.1,
+  "G_max": 1.15,
+  "delta_kappa_min": -0.05,
+  "fuente": "config/validacion.yaml umbrales.T"
+ },
+ "veredicto": {
+  "mexico->argentina T1": false,
+  "mexico->argentina T2": false,
+  "argentina->mexico T1": false,
+  "argentina->mexico T2": true
+ },
+ "salidas_sha256": {
+  "figures/FIG-03_transfer_mx_ar.png": "7beb06852b430737b7e353a0a2786994b8fa3612020b417f96b1aa33bdd43126",
+  "figures/FIG-03_transfer_mx_ar.svg": "704a9402f8a690a24d50fe7caf365249818fbd0b19611c0abe23246446c82401"
+ },
+ "ledger_estado": "verificado"
+}

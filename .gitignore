@@ -1,0 +1,17 @@
+# SI-generated (AI): Claude Code — .gitignore of the public product repo
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+.env.*
+!.env.example
+logs/
+data/raw/
+data/interim/
+data/processed/
+# app/data is built by scripts/reproducir.sh (and published on the gh-pages branch), not versioned on main; only its license file is (the README links it)
+app/data/*
+!app/data/LICENSE-DATA.md
+runs/repro-*/
+build/

@@ -1,0 +1,5 @@
+direccion,modo,B,log_B,G,kappa_transfer,kappa_local,delta_kappa,pasa_logB,pasa_G,pasa_dkappa,transferible
+mexico->argentina,T1,0.8317,-0.1843,1.2114,0.5126,0.5944,-0.0818,False,False,False,False
+mexico->argentina,T2,1.0577,0.0561,1.0693,0.5234,0.5944,-0.071,True,True,False,False
+argentina->mexico,T1,1.0646,0.0626,1.1693,0.4317,0.5131,-0.0814,True,False,False,False
+argentina->mexico,T2,0.9224,-0.0808,1.099,0.4816,0.5131,-0.0314,True,True,True,True

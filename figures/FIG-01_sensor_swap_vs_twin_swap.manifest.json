@@ -1,0 +1,84 @@
+{
+  "figura": "FIG-01",
+  "titulo": "Swapping MODIS for VIIRS changes unusual-month flags more than swapping twin VIIRS satellites",
+  "marca_si": "SI-generated (AI): Claude Code wrote the script that produced this file during the event; reviewed by the team.",
+  "creado_utc": "2026-11-15T21:55:12+00:00",
+  "estado": "single pre-registered test result (EXP-009, scenario C); published only with the prior-exposure statement",
+  "clm": "CLM-104",
+  "origen": {
+    "experimento": "EXP-009",
+    "commit_experimento": "90e10ce",
+    "tag": "prereg-v1",
+    "script_figura": "src/figuras/fig01_sensor_swap.py",
+    "figdata": "figures/figdata/FIG-01_sensor_swap_vs_twin_swap.csv",
+    "campos": "metricas.paises.<pais>.E1c.P2_P2b: kappa_gemelos, kappa_cruzado, kappa_cruzado_M1, kappa_cruzado_M0, cociente_pareado; verdict.veredicto.por_pais.<pais>.E1c.P2_bloque3",
+    "ic": "bootstrap por bloque 3 grados x anio, B=1000, percentiles 2.5-97.5 (calculado por EXP-009); M1 y M0 solo punto"
+  },
+  "comando": "flock data/.pesado.lock .venv/bin/python src/figuras/fig01_sensor_swap.py --real",
+  "semilla": 42,
+  "entradas": [
+    {
+      "ruta": "runs/EXP-009/verdict.json",
+      "sha256": "ae3555c3e279944325d92a151d8b0a41e02bee1e146d67c2ee24c0b278255f99",
+      "bytes": 10766
+    },
+    {
+      "ruta": "runs/EXP-009/metricas.json",
+      "sha256": "b7c29cb32485d8f3fc5ce1a8dba2d5c84bb70008ed964ea4e92085c71d2393b3",
+      "bytes": 89493
+    },
+    {
+      "ruta": "runs/EXP-009/manifiesto.json",
+      "sha256": "43897000094b272bf999a239b788949ba49c8f048dbf8312292fb6babd74bd21",
+      "bytes": 5552
+    },
+    {
+      "ruta": "figures/figdata/FIG-01_sensor_swap_vs_twin_swap.csv",
+      "sha256": "99b3e49b04fb2fba984f00bf163302aff7f6100b6d857961378633483d7997af",
+      "bytes": 743
+    },
+    {
+      "ruta": "src/figuras/fig01_sensor_swap.py",
+      "sha256": "6c99a8d6e85d66b6c8f3f22650b6e2229ff662b3add46a7f5187c886cef4fcc7",
+      "bytes": 10246
+    }
+  ],
+  "salidas": [
+    "figures/FIG-01_sensor_swap_vs_twin_swap.png",
+    "figures/FIG-01_sensor_swap_vs_twin_swap.svg"
+  ],
+  "python": "3.14.9",
+  "matplotlib": "3.11.2",
+  "anti_fuga": "n/a tras el veredicto; reserva abierta solo por runs/EXP-009/verdict.json (modo prueba, dirty=false)",
+  "clm_nota": "CLM-104 = veredicto sensor-swap (texto C), verificado en el ledger (EXP-009, EVD-103, EVD-104); las cifras de la figura son CLM-129 (verificado) y M1/M0 de CLM-133 (verificado). Pie con la declaracion de exposicion previa (CLM-119) y el addendum (CLM-135), ambos verificados.",
+  "rotulo_figura": "PRE-REGISTERED SINGLE TEST 2019-2021 (EXP-009)",
+  "umbrales": {
+    "kappa_min": 0.6,
+    "cociente_gemelos_min": 0.75,
+    "fuente": "config/validacion.yaml umbrales.P2"
+  },
+  "valores": {
+    "Mexico": {
+      "kappa_twin": 0.7506,
+      "umbral_twin": 0.563,
+      "cociente": 0.6835
+    },
+    "Argentina": {
+      "kappa_twin": 0.8046,
+      "umbral_twin": 0.6035,
+      "cociente": 0.7388
+    }
+  },
+  "salidas_sha256": {
+    "figures/FIG-01_sensor_swap_vs_twin_swap.png": "0a911b0035b969972f94331ff603b1fa3bdb07e88b082fa0ed03ad62eb485e34",
+    "figures/FIG-01_sensor_swap_vs_twin_swap.svg": "1a671a6ab11a72e29fe02bfbbe024dd479ec71efa1060c566f802c61a22083f8"
+  },
+  "ledger_estado": {
+    "CLM-104": "verificado",
+    "CLM-129": "verificado",
+    "CLM-133": "verificado",
+    "CLM-119": "verificado",
+    "CLM-135": "verificado",
+    "nota": "ledger revisado 2026-11-15 ~16:10 Puebla (carril ledger, ronda 2 del gate H4); solo campos de texto, las salidas y sus sha256 no cambian"
+  }
+}
