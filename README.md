@@ -7,7 +7,7 @@
 
 **NASA Space Apps Challenge** · Challenge: *Harmonization of MODIS and VIIRS Hot Spots* · Team **Talavera Orbital** (Puebla, Mexico) · Local event: Bahía Blanca, Argentina (online)
 
-**App:** https://zalvadork.github.io/talavera-orbital-hotspots/ · **Pre-registration:** [docs/03-nucleo/PREREGISTRATION.md](docs/03-nucleo/PREREGISTRATION.md) (byte-identical copy of the file frozen under git tag `prereg-v1` before the single test) · **Single-test result:** [runs/EXP-009/](runs/EXP-009/)
+**App:** https://zalvadork.github.io/talavera-orbital-hotspots/ · **Demo video (30 s):** https://zalvadork.github.io/talavera-orbital-hotspots/video/talavera-orbital-30s.mp4 · **Pre-registration:** [docs/03-nucleo/PREREGISTRATION.md](docs/03-nucleo/PREREGISTRATION.md) (byte-identical copy of the file frozen under git tag `prereg-v1` before the single test) · **Single-test result:** [runs/EXP-009/](runs/EXP-009/)
 
 ## Summary
 

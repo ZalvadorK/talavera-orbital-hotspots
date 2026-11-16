@@ -1,8 +1,8 @@
 {
  "schema": 1,
  "tool": "scripts/publicar_producto.sh",
- "built_utc": "2026-11-15T23:31:48Z",
- "private_commit": "d0f5fac05ab650753360747cb02d3d409b406c51",
+ "built_utc": "2026-11-16T01:47:02Z",
+ "private_commit": "a5630e2d15e4509d84ae97bd897bcab008c31dd2",
  "private_tree_dirty_in_published_paths": false,
  "si_assisted": true,
  "pre_verdict": false,
@@ -10,10 +10,10 @@
  "prereg_tag": "prereg-v1",
  "prereg_tag_commit": "90e10ce0df38e950487a5536375943088e3b4d9d",
  "readme_source": "docs/07-entrega/publico-borrador/README.md",
- "readme_source_sha256": "517ef97326dc291d9d3d32f080b1b0965dab3e20e4b5ff1c1b86ed77b037cc8e",
+ "readme_source_sha256": "64a067f0b0831517f0b0bfbc70b31be738bdd0f3d052a8c3f01a994a443a8d47",
  "readme_clm_tags_removed": 134,
- "files_count": 1941,
- "total_bytes": 322381648,
+ "files_count": 1943,
+ "total_bytes": 327477732,
  "files": [
   {
    "path": ".env.example",
@@ -37,8 +37,13 @@
   },
   {
    "path": "README.md",
-   "bytes": 30027,
-   "sha256": "1d02acc6b10d3cee7de79c2bb107e4b57568622ae4d5cbb521ca5cdf3f2d1c5a"
+   "bytes": 30138,
+   "sha256": "aeaea9bfa418d5465889fb36dd1e50fd155fd128ec45753baa7cef366770ba22"
+  },
+  {
+   "path": "app/.nojekyll",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   {
    "path": "app/css/calendario.css",
@@ -8987,8 +8992,8 @@
   },
   {
    "path": "app/index.html",
-   "bytes": 12961,
-   "sha256": "cb6a3216f9f3d0e728001b58dcc2a548523fe6d862582ce02baa191c37e606cc"
+   "bytes": 12995,
+   "sha256": "34196c373b883bc26c9a8945a7f81f6b4434c230fc2610a89d702e4a9350751a"
   },
   {
    "path": "app/js/aoi.js",
@@ -9364,6 +9369,11 @@
    "path": "app/vendor/leaflet-draw/leaflet.draw.js",
    "bytes": 67484,
    "sha256": "b22a1f7385308e5adadd85a4c2d84e9fc523ebd70d37868cba0fe2387362460b"
+  },
+  {
+   "path": "app/video/talavera-orbital-30s.mp4",
+   "bytes": 5095939,
+   "sha256": "f6591cc6485b9e0ad7d8b5a2c1ef2ace49026848ac8236bcb794002a3a57833d"
   },
   {
    "path": "config/validacion.hashes.json",
