@@ -1,0 +1,51 @@
+/* SI-generated (AI): Claude Code wrote this during the event; reviewed by the team.
+ *
+ * tendencia.css - annual trend view (descriptive): controls, the four states (loading / empty / error / ready), figure, texts, table.
+ * The figure itself is SVG with inline attributes (it does not need this file to export to PNG). Tokens come from estilo.css.
+ */
+.tr { max-width: 880px; margin: 0 auto; }
+.tr *, .tr *::before, .tr *::after { box-sizing: border-box; }
+
+.tr-bar { display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: flex-end; justify-content: space-between; margin-bottom: 0.6rem; }
+.tr-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 1rem; margin: 0; padding: 0.4rem 0.8rem 0.5rem; }
+.tr-controls legend { font-size: 0.85rem; }
+.tr-opt { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 2rem; cursor: pointer; }
+.tr-opt input { width: 1rem; height: 1rem; accent-color: var(--blue); }
+.tr-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+.tr-msg { font-size: 0.85rem; color: var(--text-2); }
+.tr-msg--bad { color: var(--danger); font-weight: 600; }
+
+.tr-notices { list-style: none; margin: 0 0 0.6rem; padding: 0; display: grid; gap: 0.4rem; }
+.tr-notice { border-left: 5px solid #e69f00; background: #fff6e0; padding: 0.4rem 0.7rem; font-size: 0.9rem; }
+
+.tr-badge { margin: 0.4rem 0; }
+.tr-fig svg { display: block; width: 100%; height: auto; max-width: 880px; background: #fff; border: 1px solid var(--line); }
+.tr-rows { margin: 0.7rem 0 0.4rem; padding-left: 1.2rem; }
+.tr-rows li { margin: 0.35rem 0; }
+.tr-rows li[data-ok="false"] { color: var(--text-2); }
+.tr-details { margin: 0.6rem 0; }
+.tr-details > table { margin-top: 0.5rem; }
+.tr-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.tr-table th, .tr-table td { border-bottom: 1px solid var(--line); padding: 0.25rem 0.4rem; text-align: right; vertical-align: top; }
+.tr-table th[scope="row"], .tr-table td:last-child, .tr-table thead th:last-child { text-align: left; }
+.tr-table thead th { background: var(--bg-soft); }
+.tr-table tr[data-status="incomplete"] td, .tr-table tr[data-status="provisional"] td { color: var(--text-2); font-style: italic; }
+.tr-notes { margin-top: 0.8rem; }
+@media (max-width: 600px) { .tr-details { overflow-x: auto; } .tr-table { min-width: 560px; } }
+
+/* states --------------------------------------------------------------------------------------- */
+.tr--loading, .tr--empty, .tr--error { border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; background: #fff; }
+.tr--error { border-color: var(--danger); background: #fdecee; }
+.tr--empty { background: var(--bg-soft); }
+.tr-state-title { margin: 0 0 0.3rem; font-weight: 700; font-size: 1.05rem; }
+.tr-state-msg { margin: 0 0 0.5rem; }
+.tr-state-hint { margin: 0 0 0.7rem; color: var(--text-2); font-size: 0.9rem; }
+.tr-skel { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; margin-bottom: 0.7rem; opacity: 0.8; }
+.tr-skel i { display: block; height: 70px; background: linear-gradient(90deg, #e6e6e6 25%, #f3f3f3 37%, #e6e6e6 63%); background-size: 400% 100%; animation: tr-shimmer 1.4s ease infinite; border-radius: 2px; }
+.tr-spin { display: inline-block; width: 14px; height: 14px; vertical-align: -2px; border: 2px solid var(--line-strong); border-top-color: var(--text); border-radius: 50%; animation: tr-rot 0.9s linear infinite; }
+@keyframes tr-shimmer { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
+@keyframes tr-rot { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .tr-skel i, .tr-spin { animation: none; } }
+
+/* the "pending" notice of a section is hidden once its view mounts: author CSS (.status { display: flex }) would otherwise beat [hidden] */
+.status[hidden] { display: none; }

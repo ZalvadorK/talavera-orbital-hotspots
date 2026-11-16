@@ -1,0 +1,128 @@
+{
+ "id": "export_demo_argentina",
+ "comando": "python src/exportar_demo.py --pesos real --pais ambos --exp EXP-001,EXP-002",
+ "commit": "d0f5fac",
+ "commit_con_cambios_sin_commit": false,
+ "exportador_sha256": "94bbce0537a5172646c4cef5cdb3414e513c7bdd13f581b7be7514407e562ab5",
+ "semilla": null,
+ "nota_semilla": "deterministic (no randomness)",
+ "si": "SI-generated (AI): Claude Code wrote the script that produced this file during the event; reviewed by the team.",
+ "fecha_utc": "2026-11-15T23:31:09+00:00",
+ "reserva_abierta": true,
+ "verdict": {
+  "exp": "EXP-009",
+  "sha256": "ae3555c3e279944325d92a151d8b0a41e02bee1e146d67c2ee24c0b278255f99"
+ },
+ "pesos": {
+  "modo": "real",
+  "detecciones_modis": 874821,
+  "sin_peso_nan": 2,
+  "intervalo_s1_ic80_multiplicativo": {
+   "T/1deg": [
+    0.0,
+    5.1488
+   ],
+   "T/pais": [
+    0.6716,
+    1.656
+   ],
+   "T/aoi": [
+    0.0,
+    7.1728
+   ],
+   "TA/1deg": [
+    0.0,
+    5.3482
+   ],
+   "TA/pais": [
+    0.7997,
+    1.3008
+   ],
+   "TA/aoi": [
+    0.0,
+    5.9002
+   ]
+  },
+  "factores_filas": 22932,
+  "ventana_calibracion": [
+   "2012-02-01",
+   "2018-12-31"
+  ]
+ },
+ "synthetic": false,
+ "entradas_sha256": {
+  "data/processed/deteccion_argentina.parquet": "951459684ad413a727014706c6f0c3054298ea313e76f093d3ea387054a6df16",
+  "data/processed/disponibilidad_plataforma_dia.csv": "ac2e075de4819b792f86c314f4b541ad49c2e85437f83f0e76abbfe156467135",
+  "data/raw/fronteras/ne_10m_admin_0_countries.zip": "ce1ac7036499a0edd641fbc093cd209a98f96a49d2eca8480aaacad35138a7f6",
+  "data/processed/intervalos_argentina.json": "cacdcba7a23691fd40f88018edb172484b716c2f346ee96e0edcb86368d457e6",
+  "data/processed/factores_argentina_2012-02-01_2018-12-31.parquet": "a5eafe415de27f52d3669d7de573820a342e1fcace004040f3651e7b9f85d443"
+ },
+ "estadisticas": {
+  "filas_base": 6488317,
+  "filas_serie": 3842135,
+  "filas_serie_en_mascara": 129793,
+  "filas_mensual": 713898,
+  "filas_diario": 936309,
+  "detecciones_modis_sin_peso": 2,
+  "datos_hasta": "2026-11-14",
+  "reserva_abierta": true,
+  "nrt_desde": "2026-08-01",
+  "tiempos_s": {
+   "tabla_base": 5.5,
+   "pesos": 1.3,
+   "agregados": 0.9
+  }
+ },
+ "verificacion_relectura": {
+  "teselas_puntos_verificadas": 342,
+  "teselas_diario_verificadas": 339,
+  "celda_mes_incoherentes": 0,
+  "max_dif_v": 0.0
+ },
+ "tamanos": {
+  "total_bytes": 137812933,
+  "por_tipo": {
+   "mensual": {
+    "archivos": 342,
+    "bytes": 30305414,
+    "max_bytes": 584846,
+    "max_archivo": "-30_-62.csv",
+    "mediana_bytes": 34801
+   },
+   "diario": {
+    "archivos": 339,
+    "bytes": 27255068,
+    "max_bytes": 710514,
+    "max_archivo": "-30_-62.csv",
+    "mediana_bytes": 18183
+   },
+   "puntos": {
+    "archivos": 342,
+    "bytes": 80189313,
+    "max_bytes": 1924113,
+    "max_archivo": "-29_-61.parquet",
+    "mediana_bytes": 68903
+   }
+  }
+ },
+ "segundos_total": 26.2,
+ "segundos_escritura": 6.1,
+ "rss_pico_mb": 995.2,
+ "contorno": {
+  "bbox": [
+   -73.6,
+   -55.1,
+   -53.6,
+   -21.7
+  ],
+  "bytes": 47477,
+  "partes_originales": 8,
+  "partes_conservadas": 8
+ },
+ "disponibilidad": {
+  "meses_incompletos": 2
+ },
+ "duckdb": "2.0.0",
+ "memory_limit": "600MB",
+ "threads": 2
+}

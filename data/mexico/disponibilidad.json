@@ -1,0 +1,111 @@
+{
+ "si": "SI-generated (AI): Claude Code wrote the script that produced this file during the event; reviewed by the team.",
+ "pais": "mexico",
+ "fuente": "data/processed/disponibilidad_plataforma_dia.csv",
+ "sha256_fuente": "ac2e075de4819b792f86c314f4b541ad49c2e85437f83f0e76abbfe156467135",
+ "regla": "ADR-0003 R1, global rule Mexico+Argentina with N=20 plus official notices (Terra 2001-06-15..07-02 and 2016-02-18..28). A month is INCOMPLETE if some day has NO MODIS platform with data; a day with a single platform without data is backed up by the other (it does not make the month incomplete).",
+ "rango_tabla": [
+  "2000-11-01",
+  "2018-12-31"
+ ],
+ "cobertura_modis_en_serie": "2000-12 to 2011-12 (MODIS is in the series only until Dec 2011; from Jan 2012 the series is VIIRS)",
+ "plataformas": {
+  "Terra": {
+   "dias_sin_datos": 42,
+   "rangos": [
+    [
+     "2001-06-15",
+     "2001-07-02",
+     "aviso_oficial"
+    ],
+    [
+     "2003-12-17",
+     "2003-12-24",
+     "regla_datos"
+    ],
+    [
+     "2006-06-21",
+     "2006-06-21",
+     "regla_datos"
+    ],
+    [
+     "2006-08-23",
+     "2006-08-23",
+     "regla_datos"
+    ],
+    [
+     "2008-12-21",
+     "2008-12-22",
+     "regla_datos"
+    ],
+    [
+     "2016-02-18",
+     "2016-02-28",
+     "aviso_oficial"
+    ],
+    [
+     "2017-04-24",
+     "2017-04-24",
+     "regla_datos"
+    ]
+   ]
+  },
+  "Aqua": {
+   "dias_sin_datos": 13,
+   "rangos": [
+    [
+     "2002-07-30",
+     "2002-08-07",
+     "regla_datos"
+    ],
+    [
+     "2002-09-12",
+     "2002-09-13",
+     "regla_datos"
+    ],
+    [
+     "2002-11-15",
+     "2002-11-15",
+     "regla_datos"
+    ],
+    [
+     "2003-05-12",
+     "2003-05-12",
+     "regla_datos"
+    ]
+   ]
+  }
+ },
+ "meses_incompletos": [
+  {
+   "y": 2001,
+   "m": 6,
+   "motivo": "outage",
+   "dias_sin_modis": 16
+  },
+  {
+   "y": 2001,
+   "m": 7,
+   "motivo": "outage",
+   "dias_sin_modis": 2
+  }
+ ],
+ "meses_parciales": [
+  {
+   "y": 2012,
+   "m": 1,
+   "motivo": "partial month: S-NPP data start 2012-01-20"
+  }
+ ],
+ "mes_en_curso": {
+  "y": 2026,
+  "m": 11,
+  "hasta": "2026-11-14",
+  "nota": "month to date; the last NRT days are provisional"
+ },
+ "nrt_desde": {
+  "y": 2026,
+  "m": 8
+ },
+ "nota_ausencia_de_fila": "In mensual/*.csv a cell-month without a row means 0 detections, EXCEPT when the month is in meses_incompletos (then it is 'no data', never 0)."
+}

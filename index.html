@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- SI-generated (AI): Claude Code wrote this during the event; reviewed by the team. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="SI-generated (AI): Claude Code wrote this during the event; reviewed by the team.">
+  <meta name="description" content="Talavera Orbital, Hotspot Calendar: MODIS and VIIRS hotspot detections on one calendar scale for Mexico and Argentina, with the uncertainty shown. Pick an area and dates, then download the detections as CSV.">
+  <title>Talavera Orbital — Hotspot Calendar</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="vendor/leaflet-draw/leaflet.draw.css">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/tendencia.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div id="banner-synthetic" class="banner" role="alert" hidden>
+    <strong>SYNTHETIC DATA.</strong>
+    <span id="banner-text">These numbers were generated for interface testing. They are not real detections and must not be cited.</span>
+  </div>
+
+  <header class="site-header">
+    <h1>Talavera Orbital — Hotspot Calendar</h1>
+    <p class="tagline">One calendar. Different sensors. Visible uncertainty.</p>
+    <p class="lede">Satellite hotspot detections (not individual fires) from MODIS and VIIRS, expressed on one common scale, for Mexico and Argentina.</p>
+  </header>
+
+  <main id="main">
+    <div class="layout">
+      <!-- 1. Selection -->
+      <section id="selection" class="panel" aria-labelledby="h-selection">
+        <h2 id="h-selection">1. Choose an area and dates</h2>
+        <form id="selection-form" novalidate autocomplete="off">
+          <fieldset>
+            <legend>Place</legend>
+            <div class="field">
+              <label for="country">Country</label>
+              <select id="country" name="country" disabled></select>
+            </div>
+            <div class="field">
+              <label for="preset">Preset area</label>
+              <select id="preset" name="preset" disabled>
+                <option value="">Select a preset area</option>
+              </select>
+            </div>
+            <p class="hint">Or draw a rectangle or polygon on the map, or enter bounds below.</p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Bounds (degrees)</legend>
+            <div class="grid-2">
+              <div class="field">
+                <label for="b-north">North latitude</label>
+                <input id="b-north" name="north" type="number" inputmode="decimal" min="-90" max="90" step="0.1" aria-describedby="err-north">
+                <p class="field-error" id="err-north" role="alert" hidden></p>
+              </div>
+              <div class="field">
+                <label for="b-south">South latitude</label>
+                <input id="b-south" name="south" type="number" inputmode="decimal" min="-90" max="90" step="0.1" aria-describedby="err-south">
+                <p class="field-error" id="err-south" role="alert" hidden></p>
+              </div>
+              <div class="field">
+                <label for="b-west">West longitude</label>
+                <input id="b-west" name="west" type="number" inputmode="decimal" min="-180" max="180" step="0.1" aria-describedby="err-west">
+                <p class="field-error" id="err-west" role="alert" hidden></p>
+              </div>
+              <div class="field">
+                <label for="b-east">East longitude</label>
+                <input id="b-east" name="east" type="number" inputmode="decimal" min="-180" max="180" step="0.1" aria-describedby="err-east">
+                <p class="field-error" id="err-east" role="alert" hidden></p>
+              </div>
+            </div>
+            <p class="field-error" id="err-bounds" role="alert" hidden></p>
+            <div class="actions">
+              <button type="button" id="apply-bounds" class="btn btn-primary">Apply bounds</button>
+              <button type="button" id="clear-aoi" class="btn">Clear area</button>
+            </div>
+            <p class="hint" id="snap-note">The area is a spatial approximation, snapped to a 0.1&deg; grid (about 11 km): every 0.1&deg; cell whose center falls inside your shape is used, so the downloadable CSV always matches the counts shown. A cell counts as covered when its center is inside the country outline or the outline crosses it (see Method notes).</p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Dates (UTC, whole months)</legend>
+            <div class="field">
+              <label for="quick-range">Quick range</label>
+              <select id="quick-range" name="quick-range" disabled></select>
+            </div>
+            <div class="stack">
+              <div class="field">
+                <span class="label" id="lbl-from">From</span>
+                <div class="inline" role="group" aria-labelledby="lbl-from">
+                  <select id="from-month" aria-label="From month" disabled></select>
+                  <select id="from-year" aria-label="From year" disabled></select>
+                </div>
+              </div>
+              <div class="field">
+                <span class="label" id="lbl-to">To</span>
+                <div class="inline" role="group" aria-labelledby="lbl-to">
+                  <select id="to-month" aria-label="To month" disabled></select>
+                  <select id="to-year" aria-label="To year" disabled></select>
+                </div>
+              </div>
+            </div>
+            <p class="field-error" id="err-range" role="alert" hidden></p>
+          </fieldset>
+
+          <fieldset>
+            <legend>What to count</legend>
+            <div class="radio">
+              <input type="radio" id="scope-veg" name="scope" value="veg" checked>
+              <label for="scope-veg">Vegetation fires only <span class="muted">(outside the static volcano and industry mask)</span></label>
+            </div>
+            <div class="radio">
+              <input type="radio" id="scope-all" name="scope" value="all">
+              <label for="scope-all">All thermal anomalies <span class="muted">(include masked detections)</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field checkbox">
+            <input type="checkbox" id="basemap-toggle">
+            <label for="basemap-toggle">Show OpenStreetMap background</label>
+          </div>
+          <p class="hint" id="basemap-note" hidden></p>
+        </form>
+      </section>
+
+      <!-- Map -->
+      <section id="map-section" class="panel" aria-labelledby="h-map">
+        <h2 id="h-map" class="sr-only">Map</h2>
+        <div id="map" role="region" aria-label="Map. Use the toolbar to draw a rectangle or polygon; the same area can be entered with the bounds fields."></div>
+        <ul class="legend" aria-label="Map legend">
+          <li><span class="swatch sw-covered" aria-hidden="true"></span> Cells used (solid blue)</li>
+          <li><span class="swatch sw-outside" aria-hidden="true"></span> Cells outside processed coverage (dashed gray)</li>
+          <li><span class="swatch sw-drawn" aria-hidden="true"></span> Your shape (dashed orange)</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- 2. Results -->
+    <section id="results" class="panel" aria-labelledby="h-results">
+      <h2 id="h-results">2. Your selection</h2>
+      <div id="status" class="status" data-screen="loading" role="status" aria-live="polite">
+        <div class="status-icon" aria-hidden="true"></div>
+        <div class="status-body">
+          <p id="status-title" class="status-title">Loading data</p>
+          <p id="status-detail" class="status-detail"></p>
+          <button type="button" id="status-retry" class="btn" hidden>Try again</button>
+        </div>
+      </div>
+      <progress id="data-progress" max="1" value="0" hidden aria-label="Loading monthly data"></progress>
+
+      <div id="summary" hidden>
+        <dl class="kv">
+          <div><dt>Country</dt><dd id="sum-country"></dd></div>
+          <div><dt>Area (snapped to 0.1&deg;)</dt><dd id="sum-area"></dd></div>
+          <div><dt>Dates (UTC)</dt><dd id="sum-dates"></dd></div>
+          <div class="key"><dt>Hotspot detections in the series</dt><dd id="sum-rows"></dd></div>
+          <div><dt>VIIRS-equivalent total <span class="muted">(estimated before 2012)</span></dt><dd id="sum-veq"></dd></div>
+          <div><dt id="sum-masked-label">Masked detections (excluded)</dt><dd id="sum-masked"></dd></div>
+          <div><dt>Provisional (NRT) detections</dt><dd id="sum-prov"></dd></div>
+          <div><dt>Months flagged incomplete</dt><dd id="sum-inc"></dd></div>
+        </dl>
+        <p class="note">Counts are satellite hotspot detections, not individual fires. One fire can produce several detections or none.</p>
+
+        <div class="downloads">
+          <button type="button" id="btn-csv" class="btn btn-primary" disabled>Download CSV</button>
+          <button type="button" id="btn-meta" class="btn" disabled>Download metadata (JSON)</button>
+        </div>
+        <progress id="csv-progress" max="1" value="0" hidden aria-label="Preparing the CSV"></progress>
+        <p id="csv-msg" class="csv-msg" role="status" aria-live="polite"></p>
+        <p class="note">The CSV has one row per hotspot detection of the harmonized series. Terra and Aqua rows (before 2012) carry a VIIRS-equivalent weight. A download is limited to <span id="csv-limit"></span> rows; to get more, narrow the date range or the area.</p>
+      </div>
+    </section>
+
+    <!-- 3. Calendar (built in a later step) -->
+    <section id="calendar" class="panel" data-state="pending" aria-labelledby="h-calendar">
+      <h2 id="h-calendar">3. Fire-activity calendar</h2>
+      <div class="status" data-screen="pending">
+        <div class="status-icon" aria-hidden="true"></div>
+        <div class="status-body">
+          <p class="status-title">Calendar: pending</p>
+          <p class="status-detail">The year-by-month calendar is built in a later step. It will read the area and dates chosen above.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Annual trend (descriptive): mounted next to the calendar by js/tendencia-enlace.js -->
+    <section id="trend" class="panel" data-state="pending" aria-labelledby="h-trend">
+      <h2 id="h-trend">4. Annual totals: harmonized and raw</h2>
+      <p class="hint">Yearly hotspot detections of your area, on one common scale (harmonized) and as each sensor detected them (raw), with a descriptive trend. It follows the area, dates and "what to count" chosen above.</p>
+      <div class="status" data-screen="pending">
+        <div class="status-icon" aria-hidden="true"></div>
+        <div class="status-body">
+          <p class="status-title">Annual totals: pending</p>
+          <p class="status-detail">This view reads the area and dates chosen above.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Method notes (filled by js/notas-metodo.js; the key-value rows by js/estado-ui.js) -->
+    <section id="about" class="panel" aria-labelledby="h-about">
+      <h2 id="h-about">Method notes</h2>
+      <details>
+        <summary>Method notes, validation, limits and sources</summary>
+        <dl class="kv" id="about-kv"></dl>
+        <div id="notes-body"></div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Intended use:</strong> historical analysis, research and planning. This is not a tactical or real-time response tool. NASA's LANCE disclaimer advises against using these data for tactical decision-making or for conditions at a local scale: <a href="https://www.earthdata.nasa.gov/data/projects/lance/disclaimer" target="_blank" rel="noopener noreferrer">LANCE disclaimer</a>.</p>
+    <p><strong>SI-generated (AI):</strong> this app was written by Claude Code during the event and reviewed by the team. The kit used to build it (toolkit, skills, templates) existed before the event and is declared in the repository README.</p>
+    <p>Data: NASA FIRMS (Fire Information for Resource Management System): MODIS and VIIRS 375 m active-fire detections, distributed through NASA Earthdata and LANCE. Credit: NASA FIRMS. This project is independent and is not endorsed by NASA. Map outlines: Natural Earth. Background map (optional): &copy; OpenStreetMap contributors.</p>
+  </footer>
+
+  <!-- Third-party libraries, vendored: see vendor/VERSIONS.md -->
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/leaflet-draw/leaflet.draw.js"></script>
+  <!-- Calendar and annual-trend views: enabled through CONFIG.CALENDAR_MODULE in js/datos-config.js (js/tendencia-enlace.js mounts both) -->
+  <script type="module" src="js/estado-arranque.js"></script>
+  <noscript><p class="noscript">This app needs JavaScript.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,128 @@
+{
+ "id": "export_demo_mexico",
+ "comando": "python src/exportar_demo.py --pesos real --pais ambos --exp EXP-001,EXP-002",
+ "commit": "d0f5fac",
+ "commit_con_cambios_sin_commit": false,
+ "exportador_sha256": "94bbce0537a5172646c4cef5cdb3414e513c7bdd13f581b7be7514407e562ab5",
+ "semilla": null,
+ "nota_semilla": "deterministic (no randomness)",
+ "si": "SI-generated (AI): Claude Code wrote the script that produced this file during the event; reviewed by the team.",
+ "fecha_utc": "2026-11-15T23:30:43+00:00",
+ "reserva_abierta": true,
+ "verdict": {
+  "exp": "EXP-009",
+  "sha256": "ae3555c3e279944325d92a151d8b0a41e02bee1e146d67c2ee24c0b278255f99"
+ },
+ "pesos": {
+  "modo": "real",
+  "detecciones_modis": 722417,
+  "sin_peso_nan": 0,
+  "intervalo_s1_ic80_multiplicativo": {
+   "T/1deg": [
+    0.0,
+    6.1884
+   ],
+   "T/pais": [
+    0.7772,
+    1.4134
+   ],
+   "T/aoi": [
+    0.0,
+    7.5486
+   ],
+   "TA/1deg": [
+    0.0,
+    5.823
+   ],
+   "TA/pais": [
+    0.8337,
+    1.2791
+   ],
+   "TA/aoi": [
+    0.0,
+    6.2532
+   ]
+  },
+  "factores_filas": 17496,
+  "ventana_calibracion": [
+   "2012-02-01",
+   "2018-12-31"
+  ]
+ },
+ "synthetic": false,
+ "entradas_sha256": {
+  "data/processed/deteccion_mexico.parquet": "935d2236b2be2e6e3e644f503f8f0c6ac32747267506b38c8c48c4fe16960426",
+  "data/processed/disponibilidad_plataforma_dia.csv": "ac2e075de4819b792f86c314f4b541ad49c2e85437f83f0e76abbfe156467135",
+  "data/raw/fronteras/ne_10m_admin_0_countries.zip": "ce1ac7036499a0edd641fbc093cd209a98f96a49d2eca8480aaacad35138a7f6",
+  "data/processed/intervalos_mexico.json": "dc533a937dd309f8e7519c8f73643f3a827809dbebbf11027a45ec695c3bd9a2",
+  "data/processed/factores_mexico_2012-02-01_2018-12-31.parquet": "db6ee4505790710a77a0890a49030dae552f4fdd5de62a288d0b15a64d08e34f"
+ },
+ "estadisticas": {
+  "filas_base": 8724827,
+  "filas_serie": 5139879,
+  "filas_serie_en_mascara": 611974,
+  "filas_mensual": 782589,
+  "filas_diario": 1676497,
+  "detecciones_modis_sin_peso": 0,
+  "datos_hasta": "2026-11-14",
+  "reserva_abierta": true,
+  "nrt_desde": "2026-08-01",
+  "tiempos_s": {
+   "tabla_base": 8.1,
+   "pesos": 1.6,
+   "agregados": 1.2
+  }
+ },
+ "verificacion_relectura": {
+  "teselas_puntos_verificadas": 252,
+  "teselas_diario_verificadas": 248,
+  "celda_mes_incoherentes": 0,
+  "max_dif_v": 0.0
+ },
+ "tamanos": {
+  "total_bytes": 179818106,
+  "por_tipo": {
+   "mensual": {
+    "archivos": 253,
+    "bytes": 32259961,
+    "max_bytes": 546931,
+    "max_archivo": "21_-99.csv",
+    "mediana_bytes": 71982
+   },
+   "diario": {
+    "archivos": 248,
+    "bytes": 47780030,
+    "max_bytes": 1025719,
+    "max_archivo": "17_-94.csv",
+    "mediana_bytes": 76855
+   },
+   "puntos": {
+    "archivos": 252,
+    "bytes": 99697551,
+    "max_bytes": 2191848,
+    "max_archivo": "18_-91.parquet",
+    "mediana_bytes": 175431
+   }
+  }
+ },
+ "segundos_total": 28.5,
+ "segundos_escritura": 6.4,
+ "rss_pico_mb": 859.9,
+ "contorno": {
+  "bbox": [
+   -118.4,
+   14.5,
+   -86.7,
+   32.8
+  ],
+  "bytes": 64899,
+  "partes_originales": 51,
+  "partes_conservadas": 27
+ },
+ "disponibilidad": {
+  "meses_incompletos": 2
+ },
+ "duckdb": "2.0.0",
+ "memory_limit": "600MB",
+ "threads": 2
+}
