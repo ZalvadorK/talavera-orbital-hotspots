@@ -191,6 +191,7 @@ In our held-out 2019–2021 test, harmonized MODIS did not meet the pre-specifie
 We used SI tools throughout the project and declare them here, in the submission form and inside the project.
 
 **What the SI did (Claude Code, Anthropic):**
+- Drafted every decision package (facts, alternatives, recommendation and confidence) for each scientific and engineering decision.
 - Wrote the code for data download, quality control, harmonization, validation, export and the web app; ran exploratory probes on the calibration years only, and ran the single frozen test after the team authorized it.
 - Drafted documentation, the pre-registration, this README and the demo script; checked English and consistency.
 - Ran independent verification passes and kept the evidence ledger that links every public number to a source or an experiment.

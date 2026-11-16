@@ -1,8 +1,8 @@
 {
  "schema": 1,
  "tool": "scripts/publicar_producto.sh",
- "built_utc": "2026-11-16T01:47:02Z",
- "private_commit": "a5630e2d15e4509d84ae97bd897bcab008c31dd2",
+ "built_utc": "2026-11-16T02:28:51Z",
+ "private_commit": "7816c39eca3a2f0dad547a13483a65cf19ba15f1",
  "private_tree_dirty_in_published_paths": false,
  "si_assisted": true,
  "pre_verdict": false,
@@ -13,7 +13,7 @@
  "readme_source_sha256": "64a067f0b0831517f0b0bfbc70b31be738bdd0f3d052a8c3f01a994a443a8d47",
  "readme_clm_tags_removed": 134,
  "files_count": 1943,
- "total_bytes": 327477732,
+ "total_bytes": 337288356,
  "files": [
   {
    "path": ".env.example",
@@ -9372,8 +9372,8 @@
   },
   {
    "path": "app/video/talavera-orbital-30s.mp4",
-   "bytes": 5095939,
-   "sha256": "f6591cc6485b9e0ad7d8b5a2c1ef2ace49026848ac8236bcb794002a3a57833d"
+   "bytes": 14906563,
+   "sha256": "bd7744684ac2d834783605ad6e179f9c049d5889fee30505e488859ff39c724b"
   },
   {
    "path": "config/validacion.hashes.json",
